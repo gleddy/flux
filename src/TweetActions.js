@@ -1,18 +1,17 @@
-import Dispatcher from "./Dispatcher";
+// import Dispatcher from "./Dispatcher";
 
 const ActionCreators = {
   addTweet(body) {
-    console.log("2. About to dispatch")
-    Dispatcher.dispatch({
-      actionType: "ADD_TWEET",
+    return {
+      type: "ADD_TWEET",
       newTweetBody: body
-    });
+    };
   },
   deleteTweet(tweetId) {
-    Dispatcher.dispatch({
-      actionType: "DELETE_TWEET",
+    return {
+      type: "DELETE_TWEET",
       tweetId
-    });
+    };
   },
   likeTweet(id) {
     Dispatcher.dispatch({

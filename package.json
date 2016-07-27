@@ -8,7 +8,8 @@
   "dependencies": {
     "flux": "^2.1.1",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "redux": "^3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
