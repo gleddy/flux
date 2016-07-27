@@ -2,6 +2,7 @@ import Dispatcher from "./Dispatcher";
 
 const ActionCreators = {
   addTweet(body) {
+    console.log("2. About to dispatch")
     Dispatcher.dispatch({
       actionType: "ADD_TWEET",
       newTweetBody: body
@@ -18,7 +19,7 @@ const ActionCreators = {
       actionType: "RETWEET",
       id
     });
-  }
+  },
 };
 
 export default ActionCreators;

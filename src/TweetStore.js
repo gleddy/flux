@@ -23,6 +23,7 @@ const actionsMap = {
       timestamp: new Date()
     };
     _data.tweets.push(newTweet);
+    console.log("4. Action is handled")
   },
   'LIKE_TWEET': () => {},
   'RETWEET': () => {}
@@ -31,8 +32,9 @@ const actionsMap = {
 let store = new Store();
 
 Dispatcher.register(action => {
-  console.log(action);
+  console.log("3. About to determine what to do with the action");
   actionsMap[action.actionType](action);
+  console.log("5. About to emit news that data has changed");
   store.emit("change");
 });
 

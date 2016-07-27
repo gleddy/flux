@@ -17,9 +17,11 @@ class App extends Component {
     this.state = getAppState();
   }
   addTweet = newTweetBody => {
+    console.log("1. In the view");
     TweetActions.addTweet(newTweetBody);
   }
   _onChange = () => {
+    console.log("6. Got news from the store, reset state")
     this.setState(getAppState());
   }
   componentDidMount() {
