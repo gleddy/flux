@@ -20,6 +20,9 @@ class App extends Component {
     console.log("1. In the view");
     TweetActions.addTweet(newTweetBody);
   }
+  deleteTweet = tweetId => {
+    TweetActions.deleteTweet(tweetId);
+  }
   _onChange = () => {
     console.log("6. Got news from the store, reset state")
     this.setState(getAppState());
@@ -34,7 +37,9 @@ class App extends Component {
     return (
       <div className="App">
         <Form addTweet={this.addTweet} />
-        <TweetList tweets={this.state.tweets} />
+        <TweetList tweets={this.state.tweets}
+                   deleteTweet={this.deleteTweet}
+                   />
       </div>
     );
   }

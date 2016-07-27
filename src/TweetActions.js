@@ -8,6 +8,12 @@ const ActionCreators = {
       newTweetBody: body
     });
   },
+  deleteTweet(tweetId) {
+    Dispatcher.dispatch({
+      actionType: "DELETE_TWEET",
+      tweetId
+    });
+  },
   likeTweet(id) {
     Dispatcher.dispatch({
       actionType: "LIKE_TWEET",

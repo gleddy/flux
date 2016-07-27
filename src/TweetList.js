@@ -7,7 +7,8 @@ class TweetList extends Component {
     return (
       <div className="TweetList">
         {this.props.tweets.map(tweet => {
-          return <Tweet key={tweet.id} {...tweet} />;
+          return <Tweet key={tweet.id} {...tweet}
+                        deleteTweet={this.props.deleteTweet} />;
         })}
       </div>
     );

@@ -25,6 +25,12 @@ const actionsMap = {
     _data.tweets.push(newTweet);
     console.log("4. Action is handled")
   },
+  'DELETE_TWEET': ({ tweetId }) => {
+    _data.tweets = _data.tweets.filter(tweet => {
+      console.log(tweet, tweetId);
+      return tweet.id !== tweetId;
+    });
+  },
   'LIKE_TWEET': () => {},
   'RETWEET': () => {}
 }
@@ -35,6 +41,7 @@ Dispatcher.register(action => {
   console.log("3. About to determine what to do with the action");
   actionsMap[action.actionType](action);
   console.log("5. About to emit news that data has changed");
+  console.log(_data.tweets);
   store.emit("change");
 });
 
