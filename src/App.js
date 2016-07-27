@@ -4,6 +4,8 @@ import './App.css';
 import TweetList from './TweetList';
 import Form from './Form';
 
+import { addTweet, deleteTweet } from "./TweetActions";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -11,20 +13,20 @@ class App extends Component {
     this.state = this.props.store.getState();
   }
   addTweet = newTweetBody => {
-    // TweetActions.addTweet(newTweetBody);
+    this.props.store.dispatch(addTweet(newTweetBody));
   }
   deleteTweet = tweetId => {
-    // TweetActions.deleteTweet(tweetId);
+    this.props.store.dispatch(deleteTweet(tweetId));
   }
-  // _onChange = () => {
-  //   this.setState(getAppState());
-  // }
-  // componentDidMount() {
-  //   TweetStore.on("change", this._onChange);
-  // }
-  // componentWillUnmount() {
-  //   TweetStore.removeListener("change", this._onChange);
-  // }
+  _onChange = () => {
+    this.setState(this.props.store.getState());
+  }
+  componentDidMount() {
+    this.unsubscribe = this.props.store.subscribe(this._onChange);
+  }
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
   render() {
     return (
       <div className="App">
