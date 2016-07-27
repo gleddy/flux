@@ -1,15 +1,23 @@
-let data = {
-  tweets: [
-    { id: 1, body: 'Hello React', timestamp: Date.now() },
-    { id: 2, body: 'Hello Flux', timestamp: Date.now() },
-    { id: 3, body: 'Hello Redux', timestamp: Date.now() }
-  ]
+let DB = {
+  data: {
+    tweets: [
+      { id: 1, body: 'Hello React', timestamp: new Date() },
+      { id: 2, body: 'Hello Flux', timestamp: new Date() },
+      { id: 3, body: 'Hello Redux', timestamp: new Date() }
+    ]
+  }
 };
 
-export const addTweet = newTweetBody => {
-  const newTweet = { id: Date.now(), body: newTweetBody, timestamp: Date.now() };
+DB.addTweet = newTweetBody => {
+  const newTweet = {
+    id: Date.now(),
+    body: newTweetBody,
+    timestamp: new Date()
+  };
 
-  data.tweets.push(newTweet);
+  DB.data.tweets.push(newTweet);
+  // emit an event
+  return newTweet;
 };
 
-export default data;
+export default DB

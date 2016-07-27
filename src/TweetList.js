@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 
+import Tweet from './Tweet';
+
 class TweetList extends Component {
   render() {
     return (
       <div className="TweetList">
-        {this.props.tweets[0].body}
+        {this.props.tweets.map(tweet => {
+          return <Tweet {...tweet} />;
+        })}
       </div>
     );
   }
