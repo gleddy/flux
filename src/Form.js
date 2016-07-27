@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
-  addTweet = () => {
+  handleAddTweet = () => {
     this.props.addTweet(this.refs.tweetInput.value);
     this.refs.tweetInput.value = "";
   };
@@ -10,7 +10,7 @@ class Form extends Component {
       <div className="Form">
         <form>
           <textarea ref="tweetInput"></textarea>
-          <button type="button" onClick={this.addTweet}>Tweet</button>
+          <button type="button" onClick={this.handleAddTweet}>Tweet</button>
         </form>
       </div>
     );

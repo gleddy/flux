@@ -3,24 +3,31 @@ import './App.css';
 
 import TweetList from './TweetList';
 import Form from './Form';
-import DB from './data';
+import TweetStore from './TweetStore';
+import TweetActions from "./TweetActions";
 
-const tweetsCopy = [
-  ...DB.data.tweets
-];
+const getAppState = () => {
+  return { tweets: TweetStore.getAllTweets() };
+};
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { tweets: tweetsCopy };
+    this.state = getAppState();
   }
   addTweet = newTweetBody => {
-    const newTweet = DB.addTweet(newTweetBody);
-    this.setState({
-      tweets: this.state.tweets.concat(newTweet)
-    })
-  };
+    TweetActions.addTweet(newTweetBody);
+  }
+  _onChange = () => {
+    this.setState(getAppState());
+  }
+  componentDidMount() {
+    TweetStore.on("change", this._onChange);
+  }
+  componentWillUnmount() {
+    TweetStore.removeListener("change", this._onChange);
+  }
   render() {
     return (
       <div className="App">
