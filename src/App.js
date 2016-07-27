@@ -5,10 +5,15 @@ import TweetList from './TweetList';
 import Form from './Form';
 import DB from './data';
 
+const tweetsCopy = [
+  ...DB.data.tweets
+];
+
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { tweets: DB.data.tweets };
+
+    this.state = { tweets: tweetsCopy };
   }
   addTweet = newTweetBody => {
     const newTweet = DB.addTweet(newTweetBody);
